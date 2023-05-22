@@ -1,0 +1,9 @@
+Flask
+cs50
+Flask-Session
+Werkzeug
+Flask-Login
+
+
+
+
