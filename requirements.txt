@@ -1,15 +1,8 @@
-#Python packages:
-
-Flask
-cs50
-Flask-Session
-Werkzeug
-Flask-Login
-
-#External files required:
-
-finance.db: SQLite database file containing the required tables (users, stock_purchases, and history)
-
+Flask==2.0.1
+cs50==8.0.4
+Flask-Session==0.4.0
+Werkzeug==2.0.1
+Flask-Login==0.5.0
 
 
 
