@@ -23,7 +23,7 @@ Welcome to Stockify, the ultimate web app for tracking your stock portfolio, buy
 **Installation**
 
 1. Clone the repository:
-  git clone https://github.com/yourusername/stockify.git
+  git clone (https://github.com/kishan5111/Stockify.git)
 
 2. Install the required dependencies: pip install -r requirements.txt
 
