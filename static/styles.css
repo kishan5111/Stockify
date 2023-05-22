@@ -1,0 +1,145 @@
+/* Size for brand */
+nav .navbar-brand {
+  font-size: xx-large;
+}
+
+/* Colors for brand */
+nav .navbar-brand .blue {
+  color: #537fbe;
+}
+nav .navbar-brand .red {
+  color: #ea433b;
+}
+nav .navbar-brand .yellow {
+  color: #f5b82e;
+}
+nav .navbar-brand .green {
+  color: #2e944b;
+}
+
+/* Styling for registration form */
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: inline-block;
+  width: 120px;
+  text-align: right;
+  margin-right: 10px;
+}
+
+.form-group input {
+  width: 200px;
+}
+
+/* Styling for sections in quoted */
+.section {
+  padding-bottom: 1rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 0.5rem;
+}
+
+.section:hover {
+  background-color: #f5f5f5;
+  transition: color 2s ease-in-out, background-color 0.15s ease-in-out;
+}
+
+/* Styling for tables */
+table {
+  background-color: transparent;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+table th,
+table td {
+  padding: 0.75rem;
+  vertical-align: middle;
+}
+
+tbody tr:nth-of-type(odd) {
+  background-color: rgba(179, 208, 255, 0.3);
+}
+
+/* Styling for buttons */
+.button-style {
+  text-decoration: none;
+}
+
+.large-button {
+  font-size: 18px;
+  padding: 10px 20px;
+  background-color: blue; /* Change to your desired color */
+  color: white; /* Change to your desired color */
+  border: none;
+  border-radius: 5px;
+  border-color: red;
+}
+
+/* Styling for headers on mobile devices */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 40px;
+    margin-top: 20px;
+  }
+}
+
+/* CSS for mobile devices */
+@media (max-width: 600px) {
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  input[type="text"],
+  input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+}
+
+/* CSS for mobile devices */
+@media (max-width: 600px) {
+  .section table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .section th,
+  .section td {
+    padding: 8px;
+    text-align: left;
+  }
+
+  .section thead th {
+    background-color: #f2f2f2;
+  }
+
+  .section tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    overflow-x: auto;
+  }
+
+  .table {
+    width: 100%;
+    white-space: nowrap;
+  }
+
+  .table thead th {
+    position: sticky;
+    top: 0;
+    background-color: #f8f9fa;
+  }
+}
