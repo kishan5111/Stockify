@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    homepage
+{% endblock %}
+
+{% block main %}
+    <!-- Welcome message -->
+    <h1 style="font-size: 70px; margin-top: 40px; text-align: center;">
+        Invest with Confidence, {{ username['username'] }}!<br>
+        Welcome to our Stock Trading Platform.
+    </h1>
+
+    <!-- Display homepage image if stock data is not available -->
+    {% if not stock_data %}
+    <div class="section">
+        <img src="static/homepage.png" alt="" style="width: 100%; height: auto;">
+    </div>
+    {% endif %}
+    {% else %}
+    <!-- Display stock data table if available -->
+    <div style="margin-top: 40px" class="section">
+        {% if stock_data %}
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Stock Owned</th>
+                        <th>Symbol</th>
+                        <th>Number of Shares</th>
+                        <th>Current Price</th>
+                        <th>Total Value</th>
+                        <th>Current Balance</th>
+                        <th>Grand Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for stock, current_price, total_values in stock_data %}
+                    <tr>
+                        <td>{{ stock['stock_name'] }}</td>
+                        <td>{{ stock['symbol'] }}</td>
+                        <td>{{ stock['total_shares'] }}</td>
+                        <td>$ {{ current_price|round(2) }}</td>
+                        <td>$ {{ total_values|round(2) }}</td>
+                        <td>$ {{ current_cash|round(2) }}</td>
+                        <td>$ {{ grand_total|round(2) }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        {% endif %}
+    </div>
+
+    <!-- "Add Cash" button -->
+    <div class="section" style="position: bottom right; bottom: 20px; right: 20px;">
+        <a href="/add_cash" class="btn btn-primary d-block d-sm-inline-block">Add Cash</a>
+    </div>
+{% endblock %}
