@@ -153,3 +153,13 @@ tbody tr:nth-of-type(odd) {
   margin-left: auto;
   max-width: 300px;
 }
+
+ /* Styles for PC screens */
+    @media (min-width: 768px) {
+        h1 {
+            font-size: 70px;
+            margin-top: 40px;
+        }
+    }
+
+  
