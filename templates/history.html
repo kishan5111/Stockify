@@ -1,0 +1,45 @@
+<!-- Extend the base layout -->
+{% extends "layout.html" %}
+
+<!-- Set the title of the page -->
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+    <!-- Display a greeting message with the username -->
+    <h1 style="font-size: 70px; margin-top: 40px;">Hey, {{ username['username'] }}! Here's all your transactions.</h1>
+    
+    <div style="margin-top: 40px;" class="section">
+        <table>
+            <thead>
+                <tr>
+                    <th>Stock Name</th>
+                    <th>Symbol</th>
+                    <th>Number of Shares</th>
+                    <th>Purchase/Sale</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Stock Price</th>
+                    <th>Purchase Price</th>
+                  <th>Sale Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for stock in data %}
+                <tr>
+                    <td>{{ stock['stock_name'] }}</td>
+                    <td>{{ stock['symbol'] }}</td>
+                    <td>{{ stock['shares'] }}</td>
+                    <td>{{ stock['sale_purchase'] }}</td>
+                    <td>{{ stock['purchase_date'] }}</td>
+                    <td>{{ stock['purchase_time'] }}</td>
+                    <td>{{ stock['purchase_price']|float|round(2)|string }}</td>
+                    <td>{{ stock['total_price']|float|round(2)|string }}</td>
+                    <td>{{ stock['sale_price']|float|round(2)|string }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
