@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Add Cash
+{% endblock %}
+
+{% block main %}
+    <!-- Heading for Add Cash page -->
+    <h1 class="text-center" style="margin-bottom:40px">Add Cash</h1>
+
+    <body>
+    <div class="container mx-auto">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="cash-box text-left">
+                    <!-- Add Cash form -->
+                    <form action="/add_cash" method="POST">
+                        <div class="form-group">
+                            <!-- Amount input field -->
+                            <label class="text-left" for="amount">Amount</label>
+                            <input type="number" autofocus autocomplete="off" step="0.01" name="amount" id="amount" class="form-control" required>
+                        </div>
+                        <!-- Add Cash button -->
+                        <button type="submit" class="btn btn-primary">Add Cash</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    </body>
+{% endblock %}
