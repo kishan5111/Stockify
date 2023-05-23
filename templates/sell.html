@@ -1,0 +1,45 @@
+<!-- Extend the base layout -->
+{% extends "layout.html" %}
+
+<!-- Set the title of the page -->
+{% block title %}
+    Sell
+{% endblock %}
+
+{% block main %}
+    {% if not_enough_stock %}
+        <!-- Display message when the user does not have enough stocks to sell -->
+        <h1 style="margin-top: 40px; margin-bottom: 20px; font-size: 24px;">You do not have enough stocks! Try selling fewer shares.</h1>
+        <div style="margin-bottom: 20px;">
+            <a href="/sell" class="button-style">
+                <button class="large-button">Try Again</button>
+            </a>
+        </div>
+        <div>
+            <a href="/homepage" class="button-style">
+                <button class="large-button">Go to Homepage</button>
+            </a>
+        </div>
+    {% else %}
+        <!-- Form to sell a stock -->
+        <h1 style="margin-bottom: 20px; font-size: 35px;">Sell Stock</h1>
+        <form action="/sell" method="POST">
+            <div class="form-group">
+                <label for="symbol">Stock Symbol</label>
+                <input type="text" placeholder="Symbol" style="text-transform: uppercase;" autofocus autocomplete="off" name="symbol" id="symbol" required>
+            </div>
+            <div class="form-group" style="margin-bottom: 20px;">
+                <label for="share">No. of Shares</label>
+                <input type="number" placeholder="Number" min="1" autofocus autocomplete="off" name="shares" id="shares" required>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Sell">
+            </div>
+        </form>
+        <div style="margin-top: 20px;">
+            <a href="/" class="button-style">
+                <button class="small-button">Back to Homepage</button>
+            </a>
+        </div>
+    {% endif %}
+{% endblock %}
