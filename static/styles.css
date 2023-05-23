@@ -143,3 +143,13 @@ tbody tr:nth-of-type(odd) {
     background-color: #f8f9fa;
   }
 }
+
+.cash-box {
+  background-color: #f8f8f8;
+  padding: 50px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 300px;
+}
