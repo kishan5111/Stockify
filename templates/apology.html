@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Apology
+{% endblock %}
+
+{% block main %}
+    {% if register_fail %}
+    <!-- Display apology image and try again button if registration fails -->
+    <div>
+        <!-- Apology image generated using memegen.link -->
+        <img alt="{{ top }}" class="border img-fluid" src="http://memegen.link/custom/{{ top | urlencode }}/{{ bottom | urlencode }}.jpg?alt=https://i.imgur.com/CsCgN7Ll.png&width=400" title="{{ top }}">
+    </div>
+    <div>
+        <!-- Try again button -->
+        <a href="/register"><button style="margin-top:30px" class="large-button">Try again</button></a>
+    </div>
+    {% else %}
+    <div>
+        <!-- Display image and back to homepage button if no registration failure -->
+        <img alt="{{ top }}" class="border img-fluid" src="http://memegen.link/custom/{{ top | urlencode }}/{{ bottom | urlencode }}.jpg?alt=https://i.imgur.com/CsCgN7Ll.png&width=400" title="{{ top }}">
+    </div>
+    <div>
+        <!-- Back to homepage button -->
+        <a href="/"><button style="margin-top:30px">Back to homepage</button></a>
+    </div>
+    {% endif %}
+{% endblock %}
