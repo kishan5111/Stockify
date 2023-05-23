@@ -1,0 +1,91 @@
+<!-- Extend the base layout -->
+{% extends "layout.html" %}
+
+<!-- Set the title of the page -->
+{% block title %}
+    Buy
+{% endblock %}
+
+{% block main %}
+    {% if not_enough_cash %}
+        <!-- Display message when the user does not have enough cash to buy the stock -->
+        <h1>You do not have enough cash to buy this stock!</h1>
+        <h2>Please try reducing the number of shares.</h2>
+        <div>
+            <a href="/buy"><button>Try again</button></a>
+            <a href="/homepage"><button>Go to homepage</button></a>
+        </div>
+    {% else %}
+        <!-- Form to buy a stock -->
+        <h1 style="margin-bottom: 100px;">Buy Stock</h1>
+        <form action="/buy" method="POST">
+            <div class="form-group">
+                <label for="symbol">Stock symbol</label>
+                <input type="text" placeholder="Symbol" style="text-transform: uppercase;" autofocus autocomplete="off" name="symbol" id="symbol" required>
+            </div>
+            <div class="form-group">
+                <label for="shares">No. of shares</label>
+                <input type="number" placeholder="Number" autofocus autocomplete="off" name="shares" id="shares" required>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="BUY">
+            </div>
+        </form>
+
+        <!-- List of company names and symbols -->
+        <h2 style="margin-top:100px; margin-bottom:30px">Here's a list of some company names and symbols:</h2>
+        <table style="border-collapse: collapse; width: 100%;">
+            <thead>
+                <tr>
+                    <th style="padding: 8px; vertical-align: middle;">Company Name</th>
+                    <th style="padding: 8px; vertical-align: middle;">Symbol</th>
+                </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td style="padding: 8px; vertical-align: middle;">Apple</td>
+                <td style="padding: 8px; vertical-align: middle;">AAPL</td>
+            </tr>
+            <tr>
+                    <td style="padding: 8px; vertical-align: middle;">Microsoft</td>
+                    <td style="padding: 8px; vertical-align: middle;">MSFT</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; vertical-align: middle;">Amazon</td>
+                    <td style="padding: 8px; vertical-align: middle;">AMZN</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; vertical-align: middle;">Alphabet</td>
+                    <td style="padding: 8px; vertical-align: middle;">GOOG/GOOGL</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; vertical-align: middle;">Tesla</td>
+                    <td style="padding: 8px; vertical-align: middle;">TSLA</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; vertical-align: middle;">Facebook</td>
+                    <td style="padding: 8px; vertical-align: middle;">META</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; vertical-align: middle;">Berkshire Hathaway</td>
+                    <td style="padding: 8px; vertical-align: middle;">BRK.A/BRK.B</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; vertical-align: middle;">Johnson &amp; Johnson</td>
+                    <td style="padding: 8px; vertical-align: middle;">JNJ</td>
+                 </tr>
+                 <tr>
+                     <td style="padding: 8px; vertical-align: middle;">Visa</td>
+                      <td style="padding: 8px; vertical-align: middle;">V</td>
+                </tr>
+                 <tr>
+                       <td style="padding: 8px; vertical-align: middle;">UnitedHealth Group</td>
+                       <td style="padding: 8px; vertical-align: middle;">UNH</td>
+                 </tr>
+            </tbody>
+        </table>
+
+        <!-- Link to go back to the homepage -->
+        <a href="/"><button>Back to homepage</button></a>
+    {% endif %}
+{% endblock %}
