@@ -1,0 +1,79 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    <title>Register</title>
+{% endblock %}
+
+{% block main %}
+    {% if registered %}
+        <h1>You are registered!</h1>
+        <p>Thank you for registering an account.</p>
+        <a href="/login"><button>Go to Login</button></a>
+    {% else %}
+        <h1>Registration</h1>
+        <form style="margin-top:40px" action="/register" method="POST">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" autocomplete="off" name="username" id="username" required>
+                <span id="usernameError" style="color: red;">
+                    {% if errors.username %}
+                        <strong>{{ errors.username }}</strong>
+                    {% endif %}
+                </span>
+            </div>
+
+            <div class="form-group">
+                <!-- At least one letter, one digit, one special character from the set [@$!%*#?&], Minimum length of 8 characters -->
+                <label for="password">Password:</label>
+                <input type="password" name="password" id="password" required title="Password must contain at least one uppercase letter, one lowercase letter, one digit, and one special character from the set [@$!%*#?&], and be at least 8 characters long.">
+                <span id="passwordError" style="color:red;">
+                    {% if errors.password %}
+                        <strong>{{ errors.password }}</strong>
+                    {% endif %}
+                </span>
+            </div>
+
+            <div class="form-group">
+                <label for="confirm">Confirm Password:</label>
+                <input type="password" name="confirm" id="confirm" required>
+            </div>
+
+            <div style="margin-top:40px" class="form-group">
+                <input type="submit" value="Register" onclick="checkUsername()">
+            </div>
+        </form>
+
+        <script type="text/javascript">
+            function checkUsername() {
+                var username = document.getElementById("username").value;
+
+                // Perform an AJAX request to the server to check if the username exists
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "/check_username", true);
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        var response = JSON.parse(xhr.responseText);
+                        if (response.exists) {
+                            document.getElementById("usernameError").textContent = "Username already exists. Please choose another username.";
+                        } else {
+                            // Submit the form if the username is available
+                            document.getElementById("usernameError").textContent = "";
+                            document.querySelector("form").submit();
+                        }
+                    }
+                };
+                xhr.send("username=" + encodeURIComponent(username));
+            }
+
+            function validatePassword() {
+                var password = document.getElementById("password").value;
+                if (password.length < 8 || !/[a-z]/.test(password) || !/[A-Z]/.test(password) || !/[0-9]/.test(password)) {
+                    document.getElementById("passwordError").innerHTML = "Password must contain at least one uppercase letter, one lowercase letter, one digit, and be at least 8 characters long.";
+                    return false;
+                }
+                return true;
+            }
+        </script>
+    {% endif %}
+{% endblock %}
