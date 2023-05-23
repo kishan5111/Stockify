@@ -1,0 +1,40 @@
+<!-- Extend the base layout -->
+{% extends "layout.html" %}
+
+<!-- Set the title of the page -->
+{% block title %}
+    Stock Quote
+{% endblock %}
+
+{% block main %}
+    <!-- Heading for the Stock Price page -->
+    <h1>Stock Price</h1>
+
+    <div class="section">
+        <!-- Table to display the stock information -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Symbol</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if quoted %}
+                    <!-- If stock information is available, display it -->
+                    <tr>
+                        <td>{{ quoted.name }}</td>
+                        <td>{{ quoted.price }}</td>
+                        <td>{{ quoted.symbol }}</td>
+                    </tr>
+                {% else %}
+                    <!-- If stock information is not available, display a message -->
+                    <tr>
+                        <td colspan="3">Stock not found</td>
+                    </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
